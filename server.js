@@ -5,6 +5,57 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
+var articleOne = {
+  title: 'Article One || Saurabh Shubham',
+  heading: 'Article one',
+  date: 'Feb 14, 2017',
+  content: ` <p>
+            This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.
+        </p>
+         <p>
+            This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.
+        </p>
+          <p>
+            This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.This is my first article.
+        </p>`
+};
+
+var htmltemplete = `
+<html>
+<head>
+    <title>${title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        .container{
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: sans-serif;
+            color: #312f2f;
+            margin-top: 60px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <hr>
+    <h3>${heading}</h3>
+    <div>
+       ${date}
+    </div>
+    <div>
+       ${content}
+    </div>
+    </div>
+</body>
+</html>
+
+`;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
